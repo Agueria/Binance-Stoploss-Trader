@@ -1,0 +1,874 @@
+[
+    {
+        "id": "ced29af97476551e",
+        "type": "tab",
+        "label": "Stop Tracker Bot",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d5e728c48a10181b",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Binance BUY",
+        "info": "",
+        "x": 230,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8d0e3a79880ec47f",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Binance Price GET",
+        "info": "",
+        "x": 510,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "251720f703907135",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Calculate Stoploss",
+        "info": "",
+        "x": 790,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "09e5156743f23d2d",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "if stoploss triggerred sell",
+        "info": "",
+        "x": 1050,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7ec75a7a37beb216",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 560,
+        "y": 740,
+        "wires": [
+            [
+                "df1de78763df3dc0"
+            ]
+        ]
+    },
+    {
+        "id": "246770d0361ad9f5",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 740,
+        "wires": [
+            [
+                "49968e7d586ecece"
+            ]
+        ]
+    },
+    {
+        "id": "49968e7d586ecece",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "",
+        "func": "\nvar time = msg.payload;\n\nmsg.payload = {\n    \n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"BUY\",\n    \"type\": \"MARKET\",\n    \"quoteOrderQty\":10,\n    \"timestamp\":time\n    \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 740,
+        "wires": [
+            [
+                "7ec75a7a37beb216"
+            ]
+        ]
+    },
+    {
+        "id": "df1de78763df3dc0",
+        "type": "debug",
+        "z": "ced29af97476551e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "21db712b1a738165",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 560,
+        "y": 820,
+        "wires": [
+            [
+                "01ba0eddee1476e2"
+            ]
+        ]
+    },
+    {
+        "id": "85e4b4a383504d3a",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 820,
+        "wires": [
+            [
+                "cccf95cd3630066a"
+            ]
+        ]
+    },
+    {
+        "id": "cccf95cd3630066a",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "",
+        "func": "\nvar time = msg.payload;\n\nmsg.payload = {\n    \n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"SELL\",\n    \"type\": \"MARKET\",\n    \"quoteOrderQty\":10,\n    \"timestamp\":time\n    \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "21db712b1a738165"
+            ]
+        ]
+    },
+    {
+        "id": "01ba0eddee1476e2",
+        "type": "debug",
+        "z": "ced29af97476551e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "b938de997d3bbdcd",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Buy",
+        "info": "",
+        "x": 990,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "dfc56c66b7be6487",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Sell",
+        "info": "",
+        "x": 970,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "e2ad89e0d10d3c32",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 220,
+        "y": 320,
+        "wires": [
+            [
+                "6e7e5075caf4fecb"
+            ]
+        ]
+    },
+    {
+        "id": "42b7f1fc6b07abe2",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [
+                "bc2a61c42b9530d9"
+            ]
+        ]
+    },
+    {
+        "id": "bc2a61c42b9530d9",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Prepare to buy",
+        "func": "\nvar time = msg.payload;\n\nmsg.payload = {\n    \n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"BUY\",\n    \"type\": \"MARKET\",\n    \"quantity\":0.0025,\n    \"timestamp\":time\n    \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "e2ad89e0d10d3c32"
+            ]
+        ]
+    },
+    {
+        "id": "6e7e5075caf4fecb",
+        "type": "debug",
+        "z": "ced29af97476551e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 210,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "aa27f9a19699b7d7",
+        "type": "http request",
+        "z": "ced29af97476551e",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.binance.com/api/v3/ticker/price?symbol={{{symbol}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "6509660fae28497b"
+            ]
+        ]
+    },
+    {
+        "id": "e214b98793dd2129",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "d9e38c731e39f61b"
+            ]
+        ]
+    },
+    {
+        "id": "d9e38c731e39f61b",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Price Check",
+        "func": "msg.symbol = \"BTCUSDT\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 240,
+        "wires": [
+            [
+                "aa27f9a19699b7d7"
+            ]
+        ]
+    },
+    {
+        "id": "6509660fae28497b",
+        "type": "debug",
+        "z": "ced29af97476551e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.price",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "71401c303463df6a",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 780,
+        "y": 200,
+        "wires": [
+            [
+                "5394c392fa251fa1"
+            ]
+        ]
+    },
+    {
+        "id": "5394c392fa251fa1",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Calculate Stoploss",
+        "func": "\n\nvar price = 38000;\nvar stopLossRatio = 2;\n\n\n\nvar newStop = price - (price*stopLossRatio/100)\nvar oldStop = 0;\n\n\nif (flow.get(\"stop\")){\n    oldStop = flow.get(\"stop\");\n}\n\nif (oldStop < newStop) {\n    flow.set(\"stop\",newStop);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 240,
+        "wires": [
+            [
+                "c8ad99688f6eea40"
+            ]
+        ]
+    },
+    {
+        "id": "c8ad99688f6eea40",
+        "type": "debug",
+        "z": "ced29af97476551e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "774dc6a85dcfaf41",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "is stop triggered?",
+        "func": "\nvar price = 38000;\n\nvar stop = flow.get(\"stop\");\n\nif (price <= stop) {\n    \n    return msg;\n}\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 220,
+        "wires": [
+            [
+                "4d9dc9165e5f9e9d"
+            ]
+        ]
+    },
+    {
+        "id": "70b773c4a1f3103d",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 1080,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d9dc9165e5f9e9d",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Prepare to sell",
+        "func": "\nvar time = msg.payload;\n\nmsg.payload = {\n    \n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"SELL\",\n    \"type\": \"MARKET\",\n    \"quantity\":0.0025,\n    \"timestamp\":time\n    \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 260,
+        "wires": [
+            [
+                "70b773c4a1f3103d"
+            ]
+        ]
+    },
+    {
+        "id": "7924498237d690e0",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Variables",
+        "func": "\nmsg.time = msg.payload;\n\nmsg.pairOneName = \"BTC\";\nmsg.pairTwoName = \"USDT\";\n\n//Symbol\nmsg.symbol = msg.pairOneName+msg.pairTwoName;\n\nmsg.quantity = 0.0025; // Purchase amount in the initial currency. \n\nmsg.stopLossRatio = 2;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "745b6c242d0bf3f8"
+            ]
+        ]
+    },
+    {
+        "id": "170d10227483ecfb",
+        "type": "inject",
+        "z": "ced29af97476551e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 540,
+        "wires": [
+            [
+                "7924498237d690e0"
+            ]
+        ]
+    },
+    {
+        "id": "745b6c242d0bf3f8",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Prepare to buy",
+        "func": "//If previously purchased, return without trading.\n\nif (flow.get(\"i bought\")) {\n    //already purchased\n    return [null, msg];\n}\nelse{\n    var time = msg.time;\n    \n    msg.payload = {\n        \"symbol\": msg.symbol,\n        \"side\": \"BUY\",\n        \"type\": \"MARKET\",\n        \"quantity\":msg.quantity,\n        \"timestamp\":time\n    }\n    \n    \n    flow.set(\"i bought\",true);\n    \n    return [msg, null];\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "0bb9a0a1a60b9048"
+            ],
+            [
+                "a62abf1b2f8477c2"
+            ]
+        ]
+    },
+    {
+        "id": "0bb9a0a1a60b9048",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 780,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a62abf1b2f8477c2",
+        "type": "http request",
+        "z": "ced29af97476551e",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.binance.com/api/v3/ticker/price?symbol={{{symbol}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 750,
+        "y": 560,
+        "wires": [
+            [
+                "fc0914a3278ea5da"
+            ]
+        ]
+    },
+    {
+        "id": "fc0914a3278ea5da",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Calculate Stoploss",
+        "func": "\n\nvar price = msg.payload.price;\n\n\n\n\nvar newStop = price - (price * parseFloat(msg.stopLossRatio) /100)\nvar oldStop = 0;\n\n\nif (flow.get(\"stop\")){\n    oldStop = flow.get(\"stop\");\n}\n\nif (oldStop < newStop) {\n    flow.set(\"stop\",newStop);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 560,
+        "wires": [
+            [
+                "d2ceb4026bc1cb74"
+            ]
+        ]
+    },
+    {
+        "id": "d2ceb4026bc1cb74",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "is stop triggered?",
+        "func": "\nvar price = msg.payload.price;\n\nvar stop = flow.get(\"stop\");\n\nif (price <= stop) {\n    \n    return msg;\n}\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 560,
+        "wires": [
+            [
+                "64c86be94ef6de63"
+            ]
+        ]
+    },
+    {
+        "id": "c208291dfe2a839c",
+        "type": "ccxt-api-v2",
+        "z": "ced29af97476551e",
+        "name": "Binance : post_order",
+        "exchange": [
+            "binance"
+        ],
+        "allexchanges": false,
+        "apitype": "customAPI",
+        "customapitype": "private",
+        "api": "private_post_order",
+        "apiprivate": "true",
+        "filtermarkets": "",
+        "filtermarketsType": "str",
+        "symbol": "",
+        "symbolType": "str",
+        "limit": "",
+        "limitType": "num",
+        "since": "",
+        "sinceType": "datepick",
+        "timeframe": "1m",
+        "timeframeType": "timeframeList",
+        "ordertype": "limit",
+        "orderside": "buy",
+        "amount": "",
+        "amountType": "num",
+        "orderprice": "",
+        "orderpriceType": "num",
+        "orderid": "",
+        "orderidType": "str",
+        "code": "",
+        "address": "",
+        "tag": "",
+        "apisecrets": "",
+        "apipayload": "payload",
+        "apipayloadType": "msg",
+        "x": 1200,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64c86be94ef6de63",
+        "type": "function",
+        "z": "ced29af97476551e",
+        "name": "Prepare to sell",
+        "func": "\nvar time = msg.payload;\n\nmsg.payload = {\n    \n        \"symbol\": msg.symbol,\n        \"side\": \"SELL\",\n        \"type\": \"MARKET\",\n        \"quantity\":msg.quantity,\n        \"timestamp\":time\n    \n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 600,
+        "wires": [
+            [
+                "c208291dfe2a839c"
+            ]
+        ]
+    },
+    {
+        "id": "9c3cd0ccd5105abe",
+        "type": "comment",
+        "z": "ced29af97476551e",
+        "name": "Final Project",
+        "info": "",
+        "x": 170,
+        "y": 480,
+        "wires": []
+    }
+]
